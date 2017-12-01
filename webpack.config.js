@@ -4,7 +4,7 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = env => {
 	return {
-		devtool: 'source-map',
+		devtool: 'cheap-module-source-map',
 		entry: './src/index.jsx',
 		output: {
 			path: __dirname + '/public/',
@@ -15,6 +15,9 @@ module.exports = env => {
 			new UglifyJsPlugin({
 				uglifyOptions: {
 					mangle: true,
+					compress: {
+						conditionals: true,
+					}
 				},
 				sourceMap: true
 			})
